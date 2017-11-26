@@ -6,24 +6,24 @@ import java.sql.SQLException;
 public class test{
 	public static void main(String[] args) {
 		Connection con;
-		String driver="com.mysql.jdbc.Driver" ;//Çı¶¯³ÌĞòÃû
+		String driver="com.mysql.jdbc.Driver" ;//é©±åŠ¨ç¨‹åºå
 		String url="jdbc:mysql://localhost:3306/emp"
-				+ "?useUnicode=true&characterEncoding=utf-8&useSSL=false";//Òª·ÃÎÊµÄÊı¾İ¿âÃû
-		String user="root";//mysqlÓÃ»§Ãû
-		String pwd="000623";//mysqlÃÜÂë
+				+ "?useUnicode=true&characterEncoding=utf-8&useSSL=false";//è¦è®¿é—®çš„æ•°æ®åº“å
+		String user="root";//mysqlç”¨æˆ·å
+		String pwd="000623";//mysqlå¯†ç 
 		try {
-			//¼ÓÔØÇı¶¯³ÌĞò
-			Class.forName(driver);//¼ÓÔØÇı¶¯³ÌĞò
-			con=DriverManager.getConnection(url,user,pwd);//Á¬½ÓÊı¾İ¿â
+			//åŠ è½½é©±åŠ¨ç¨‹åº
+			Class.forName(driver);//åŠ è½½é©±åŠ¨ç¨‹åº
+			con=DriverManager.getConnection(url,user,pwd);//è¿æ¥æ•°æ®åº“
 			if(!con.isClosed()) {
-				System.out.println("³É¹¦Á¬½ÓÊı¿â");
+				System.out.println("æˆåŠŸè¿æ¥æ•°åº“");
 			}
-			//´´½¨statement¶ÔÏó£¬Ö´ĞĞsqlÓï¾ä
+			//åˆ›å»ºstatementå¯¹è±¡ï¼Œæ‰§è¡Œsqlè¯­å¥
 			Statement statement=con.createStatement();
 			String sql="select * from emp";
 			ResultSet rs=statement.executeQuery(sql);
 			System.out.println("----------------");
-			System.out.println("ĞÕÃû\tÖ°³Æ");
+			System.out.println("å§“å\tèŒç§°");
 			System.out.println("----------------");
 			String job;
 			String id;
@@ -36,7 +36,7 @@ public class test{
 			rs.close();
 			con.close();
 		}catch(ClassNotFoundException e) {
-			//Êı¾İ¿âÇı¶¯ÀàÒì³£´¦Àí
+			//æ•°æ®åº“é©±åŠ¨ç±»å¼‚å¸¸å¤„ç†
 			System.out.println("Sorry!can't find the driver.");
 			e.printStackTrace();
 		}catch(SQLException e) {
@@ -44,7 +44,7 @@ public class test{
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-			System.out.println("Êı¾İ¿âÊı¾İ»ñÈ¡Íê±Ï£¡");
+			System.out.println("æ•°æ®åº“æ•°æ®è·å–å®Œæ¯•ï¼");
 		}
 	}
 }
