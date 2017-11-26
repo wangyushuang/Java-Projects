@@ -10,7 +10,7 @@ public class test{
 		String url="jdbc:mysql://localhost:3306/emp"
 				+ "?useUnicode=true&characterEncoding=utf-8&useSSL=false";//要访问的数据库名
 		String user="root";//mysql用户名
-		String pwd="000623";//mysql密码
+		String pwd="******";//mysql密码
 		try {
 			//加载驱动程序
 			Class.forName(driver);//加载驱动程序
