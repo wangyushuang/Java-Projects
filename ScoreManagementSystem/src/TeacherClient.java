@@ -46,6 +46,7 @@ public class TeacherClient extends JFrame{
 	private ChangePwdTeacher changepwdteacher;
 	private NewStu newstu;
 	private TeachSearchInfo teachsearchinfo;
+	private StuScore stuscore;
 	
 	CardLayout cl;
 	public TeacherClient(String coll_id,String host){ 
@@ -62,6 +63,7 @@ public class TeacherClient extends JFrame{
 		changepwdteacher=new ChangePwdTeacher(host);
 		newstu=new NewStu("01",host);//第一个参数是专业号
 		teachsearchinfo=new TeachSearchInfo(host);
+		stuscore=new StuScore(host);
 	}
 	public void initialTree(){
 		dmtnRoot.add(dmtn1);
@@ -85,6 +87,7 @@ public class TeacherClient extends JFrame{
 		jpy.add(changepwdteacher,"changepwdteacher");
 		jpy.add(newstu,"newstu");
 		jpy.add(teachsearchinfo, "teachsearchinfo");
+		jpy.add(stuscore,"stuscore");
 	}
 	public void initialFrame(){
 		this.add(jsp1);
@@ -124,7 +127,8 @@ public class TeacherClient extends JFrame{
 						cl.show(jpy, "teachsearchinfo");
 						teachsearchinfo.setFocus();
 					}else if(id.equals("222")) {//成绩查询
-						
+						cl.show(jpy, "stuscore");
+						stuscore.setFocus();
 					}else if(id.equals("31")) {//选课管理
 						
 					}else if(id.equals("32")) {//成绩录入

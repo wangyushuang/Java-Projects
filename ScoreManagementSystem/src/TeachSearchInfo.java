@@ -1,6 +1,4 @@
 import javax.swing.*;
-
-import java.awt.Color;
 import java.awt.event.*;
 public class TeachSearchInfo extends JPanel implements ActionListener{
 	private static final long serialVersionUID=1L;//序列化时保持版本的兼容性，即版本升级时保持对象的唯一性
