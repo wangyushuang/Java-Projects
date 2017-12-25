@@ -249,10 +249,10 @@ public class NewStu extends JPanel implements ActionListener{
 					coll_id+"','"+dept_id+"','"+class_id+"','"+
 					java.sql.Date.valueOf(cometime)+"')";			
 			conn.setAutoCommit(false);//取消自动提交模式
-			boolean i=stmt.execute(sql);//插入新纪录
+			int i=stmt.executeUpdate(sql);//插入新纪录
 			String sql1="insert into user_stu values('"+stu_id+"','"+stu_id+"')";//默认密码为学号
 			int j=stmt.executeUpdate(sql1);//更新
-			if(!i && 1==j) {//添加学生成功
+			if(1==i && 1==j) {//添加学生成功
 				conn.commit();//提交
 				conn.setAutoCommit(true);//恢复自动提交模式
 				JOptionPane.showMessageDialog(this, "添加成功", "提示", JOptionPane.INFORMATION_MESSAGE);//弹出提示信息

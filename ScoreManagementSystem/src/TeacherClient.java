@@ -47,7 +47,12 @@ public class TeacherClient extends JFrame{
 	private NewStu newstu;
 	private TeachSearchInfo teachsearchinfo;
 	private StuScore stuscore;
-	
+	private CourseManage coursemanage;
+	private GradeInDB gradeindb;
+	private NewCourse newcourse;
+	private NewClass newclass;
+	private Welcome welcome;
+		
 	CardLayout cl;
 	public TeacherClient(String coll_id,String host){ 
 		this.host=host;
@@ -64,6 +69,11 @@ public class TeacherClient extends JFrame{
 		newstu=new NewStu("01",host);//第一个参数是专业号
 		teachsearchinfo=new TeachSearchInfo(host);
 		stuscore=new StuScore(host);
+		gradeindb=new GradeInDB("01",host);
+		coursemanage=new CourseManage("01",host);
+		newcourse=new NewCourse("01",host);
+		newclass=new NewClass("01",host);
+		welcome=new Welcome();
 	}
 	public void initialTree(){
 		dmtnRoot.add(dmtn1);
@@ -84,10 +94,15 @@ public class TeacherClient extends JFrame{
 	public void initialJpy(){//将各功能模块添加到面板中
 		jpy.setLayout(new CardLayout());
 		cl=(CardLayout)jpy.getLayout();
+		jpy.add(welcome, "welcome");
 		jpy.add(changepwdteacher,"changepwdteacher");
 		jpy.add(newstu,"newstu");
 		jpy.add(teachsearchinfo, "teachsearchinfo");
 		jpy.add(stuscore,"stuscore");
+		jpy.add(coursemanage,"coursemanage");
+		jpy.add(gradeindb,"gradeindb");
+		jpy.add(newcourse, "newcourse");
+		jpy.add(newclass, "newclass");
 	}
 	public void initialFrame(){
 		this.add(jsp1);
@@ -103,7 +118,8 @@ public class TeacherClient extends JFrame{
 		int h=650;
 		this.setBounds(centerX-w/2,centerY-h/2-30,w,h);
 		this.setVisible(true);
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		this.setResizable(false);
 	}
 	public void addListener(){
 		jt.addMouseListener(
@@ -112,7 +128,9 @@ public class TeacherClient extends JFrame{
 					DefaultMutableTreeNode dmtntemp=(DefaultMutableTreeNode)jt.getLastSelectedPathComponent();
 					MyNode mynode=(MyNode)dmtntemp.getUserObject();
 					String id=mynode.getId();
-					if(id.equals("0")){/*欢迎页面*/}
+					if(id.equals("0")){/*欢迎页面*/
+						cl.show(jpy, "welcome");
+					}
 					else if(id.equals("11")){
 						//退出系统
 						int i=JOptionPane.showConfirmDialog(jpy,"您确定退出系统吗？","询问",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
@@ -130,13 +148,17 @@ public class TeacherClient extends JFrame{
 						cl.show(jpy, "stuscore");
 						stuscore.setFocus();
 					}else if(id.equals("31")) {//选课管理
-						
+						cl.show(jpy, "coursemanage");
+						coursemanage.setFocus();
 					}else if(id.equals("32")) {//成绩录入
-						
+						cl.show(jpy, "gradeindb");
+						gradeindb.setFocus();
 					}else if(id.equals("34")) {//添加课程
-						
+						cl.show(jpy, "newcourse");
+						newcourse.setFocus();
 					}else if(id.equals("42")) {//添加班级
-						
+						cl.show(jpy, "newclass");
+						newclass.setFocus();
 					}
 				}
 			});
