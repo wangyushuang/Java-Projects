@@ -13,4 +13,13 @@ public class HelloStrutsAction extends ActionSupport {
 		System.out.println("hello struts action..............");
 		return "ok";
 	}
+	public String book_add() {
+		System.out.println("add..........");
+		return "add";
+	}
+	public String book_update() {
+		System.out.println("update.............");
+		return "update";
+	}
+	
 }

@@ -19,29 +19,18 @@
  * under the License.
  */
 -->
-<web-app id="starter" version="2.4"
-         xmlns="http://java.sun.com/xml/ns/j2ee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
-
-  <display-name>Struts 2 Rest Example</display-name>
-
-
- <filter>
-  	<filter-name>struts2</filter-name>
-  	<filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
-  </filter>
-  <filter-mapping>
-  	<filter-name>struts2</filter-name>
-  	<url-pattern>/*</url-pattern>
-  </filter-mapping>
-  
-  
-    <!-- Welcome file lists -->
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
-
-
-
-</web-app>
+<Configuration>
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %-5p [%t] %C{2} (%F:%L) - %m%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.opensymphony.xwork2" level="info"/>
+        <Logger name="org.apache.struts2" level="info"/>
+        <Logger name="org.springframework" level="info"/>
+        <Root level="info">
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+    </Loggers>
+</Configuration>
